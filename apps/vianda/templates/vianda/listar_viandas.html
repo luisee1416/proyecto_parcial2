@@ -1,0 +1,72 @@
+{% extends 'base/base.html' %} {% load static %}
+{% block title%}Lista Viandas{%endblock %}
+
+
+{% block header%}<h1 class="titulo_pagina">Lista De Viandas</h1>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+
+{% endblock %}
+
+{% block content %}
+
+{% comment %} {% if messages %}
+{% for message in messages %}
+{% if message.tags == 'success' %}
+<div class="message" role="status">{{ message }}</div>{% endif %}
+{% if message.tags == 'error' %}
+<div class="errors" role="alert">{{ message }}</div>{% endif %}
+{% endfor %}
+{% endif %} {% endcomment %}
+<div class="container">
+
+    <div class="table-responsive-lg">
+        <table class="table-dark table-hover; table table-bordered  table-sm  align-middle">
+            <thead>
+            <tr>
+                <th scope="col-3">frecuencia</th>
+                <th scope="col-3">fecha_inicio</th>
+                <th scope="col-4">cantidad</th>
+                <th scope="col">estado</th>
+                <th scope="col">tipo_plato</th>
+                <th scope="col">vigente</th>
+                <th scope="col">usuario</th>
+             
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for vianda in viandas %}
+
+            <tr>
+                <td scope="row">{{vianda.frecuencia}}</td>
+                <td scope="row">{{vianda.fecha_inicio}}</td>
+                <td scope="row">{{vianda.cantidad}}</td>
+                <td scope="row">{{vianda.estado}}</td>
+                <td scope="row">{{vianda.tipo_plato}}</td>
+                <td scope="row">{{vianda.vigente}}</td>
+                <td scope="row">{{user.username}}</td>
+                
+
+
+              
+            </tr>
+
+
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="/" class="btn btn-secondary btn-sm">Volver</a>
+
+
+
+    </div>
+</div>
+{% endblock %}
+
+
+
+

@@ -1,5 +1,6 @@
 {% extends "base/base.html" %}
-{% block titulo %}Inicio Sesión{% endblock %}
+{% load crispy_forms_tags %}
+{% block titulo %}Registro De  Usuario{% endblock %}
 {% block contenido %}
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -7,17 +8,18 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
 
-
-    <h1>Login de Usuario</h1>
+    <h1>Registro de Usuario</h1>
     <hr>
-   <!--  {% if msj %}
+   {% comment %}  {% if msj %}
         <div>{{ msj }}</div>
-    {% endif %} -->
-    <form action="{% url 'usuario:login' %}" method="post">
+    {% endif %} {% endcomment %}
+    <form action="" method="post">
         {% csrf_token %}
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit" value="Login" class="btn btn-success btn-sm">
-        <a href="{% url 'usuario:registro' %} " class="btn btn-secondary btn-sm">Registrarse</a>
+
+        {{form | crispy}}
+        
+        <input type="submit" value="Registrar" class="btn btn-success btn-sm">
+        <a href="{% url 'usuario:login' %}" class="btn btn-warning btn-sm">Loguearse</a>
+        
     </form>
 {% endblock %}

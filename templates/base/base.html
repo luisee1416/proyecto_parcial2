@@ -3,8 +3,10 @@
 <html>
     <head>
         <title>{% block titulo %}{% endblock %}</title>
+        <html lang="es">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="{% static 'css/estilos.css' %}" rel="stylesheet">
+        
     </head>
     <body>
         <div class="contenedor">
@@ -15,13 +17,20 @@
                 <ul>
                   <li class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}"><a href="/">Index</a></li>
                    {% if user.is_authenticated %}
-                    <li class="dropdown">
+                    <li class=" dropdown">
+                        <a href="javascript:void(0)" class="dropbtn">Viandas</a>
+                        <div class="dropdown-content">
+                          <a href="{% url 'vianda:listar_viandas' %}">Listar</a>
+                          <a href="{% url 'vianda:creacion_vianda' %}">Crear</a>
+                        </div>
+                    </li>
+           {% comment %}          <li class=" dropdown">
                         <a href="javascript:void(0)" class="dropbtn">XXX</a>
                         <div class="dropdown-content">
                           <a href="">Listar</a>
                           <a href="">Crear</a>
                         </div>
-                    </li>
+                    </li> {% endcomment %}
                     {% endif %}
                 </ul>
                 {% if user.is_authenticated %}
